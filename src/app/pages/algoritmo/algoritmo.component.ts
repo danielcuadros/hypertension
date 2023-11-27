@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-algoritmo',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AlgoritmoComponent implements OnInit {
-  value1 = 130
-  value2 = 85
+  value1 = 0
+  value2 = 0
   value3 = 0
+  principal=true;
+  principal2=false;
+  control=false;
   mostrarTarjeta = false;
   mostrarTarjeta0 = false;
   mostrarTarjeta2 = false;
@@ -31,6 +36,8 @@ export class AlgoritmoComponent implements OnInit {
   mostrarTarjeta112 = false;
   mostrarTarjeta113 = false;
 
+  ocultarp = true;
+  ocultar0p = true;
   ocultar = true;
   ocultar0 = true;
   ocultar1 = true;
@@ -51,14 +58,21 @@ export class AlgoritmoComponent implements OnInit {
   ocultar16 = true;
   ocultar17 = true;
   ocultar18 = true;
-  constructor() {}
+
+
+  constructor(private scroller: ViewportScroller) {}
 
   ngOnInit() {
-    // Create a form group
+    // Asignar la propiedad `principalElement` con la referencia al elemento con la clase `.principal`
 
   }
+  
+  
 
   recargar() {
+  this.principal = true;
+  this.principal2 = false;
+  this.control = false;
   this.mostrarTarjeta = false;
   this.mostrarTarjeta0 = false;
   this.mostrarTarjeta2 = false;
@@ -102,20 +116,45 @@ export class AlgoritmoComponent implements OnInit {
   this.ocultar18 = true;
   }
 
+ //botones del militus 
 
 q0si(): void {
-  this.mostrarTarjeta0 = true;
+  this.principal = false;
+  this.principal2 = true;
   this.ocultar = false;
   this.ocultar0 = false;
   this.value3 = 1
 }
 
+
 q0sis(): void {
-  this.mostrarTarjeta0 = true;
+  this.principal = false;
+  this.principal2 = true;
   this.ocultar = false;
   this.ocultar0 = false;
   this.value3 = 2
 }
+
+// botones control
+
+controlsi(): void {
+  this.control = true;
+  this.principal2 = false;
+  this.ocultar = false;
+  this.ocultar0 = false;
+  
+}
+
+
+pmsi(): void {
+  this.mostrarTarjeta0 = true;
+  this.principal2 = false;
+  this.ocultar = false;
+  this.ocultar0 = false;
+
+}
+
+//boton primera vez
 
 guardar(): void {
     // Obtener los valores de las variables
@@ -123,130 +162,39 @@ guardar(): void {
     const value2 = this.value2;
     const value3 = this.value3;
     if(value3 == 1){
-      if (this.value1 < 130 || this.value2 < 85) {
+      if (this.value1 >= 130 || this.value2 >= 85) {
         // Mostrar una tarjeta
         this.mostrarTarjeta = true;
+        this.mostrarTarjeta0 = false;
       }else{
         this.mostrarTarjeta111 = true;
+        this.mostrarTarjeta0 = false;
       }
     }else{
-      if (this.value1 < 140 || this.value2 < 90) {
+      if (this.value1 >= 140 || this.value2 >= 90) {
         // Mostrar una tarjeta
         this.mostrarTarjeta = true;
+        this.mostrarTarjeta0 = false;
       }else{
         this.mostrarTarjeta111 = true;
+        this.mostrarTarjeta0 = false;
       }
     }
-  
   }
 
-guardar2(): void {
-  // Obtener los valores de las variables
-  const value1 = this.value1;
-  const value2 = this.value2;
-  const value3 = this.value3;
-
-  if(value3 == 1){
-    if (this.value1 < 130 || this.value2 < 85) {
-      // Mostrar una tarjeta
-      this.mostrarTarjeta5 = true;
-    }else{
-      this.mostrarTarjeta112 = true;
-    }
-  }else{
-    if (this.value1 < 140 || this.value2 < 90) {
-      // Mostrar una tarjeta
-      this.mostrarTarjeta5 = true;
-    }else{
-      this.mostrarTarjeta112 = true;
-    }
-  }
-  
-}
-
-guardar3(): void {
-  // Obtener los valores de las variables
-  const value1 = this.value1;
-  const value2 = this.value2;
-  const value3 = this.value3;
-
-  if(value3 == 1){
-    if (this.value1 < 130 || this.value2 < 85) {
-      // Mostrar una tarjeta
-      this.mostrarTarjeta8 = true;
-    }else{
-      this.mostrarTarjeta112 = true;
-    }
-  }else{
-    if (this.value1 < 140 || this.value2 < 90) {
-      // Mostrar una tarjeta
-      this.mostrarTarjeta8 = true;
-    }else{
-      this.mostrarTarjeta112 = true;
-    }
-  }
-}
-
-guardar4(): void {
-  // Obtener los valores de las variables
-  const value1 = this.value1;
-  const value2 = this.value2;
-  const value3 = this.value3;
-
-  if(value3 == 1){
-    if (this.value1 < 130 || this.value2 < 85) {
-      // Mostrar una tarjeta
-      this.mostrarTarjeta11 = true;
-    }else{
-      this.mostrarTarjeta112 = true;
-    }
-
-  }else{
-    if (this.value1 < 140 || this.value2 < 90) {
-      // Mostrar una tarjeta
-      this.mostrarTarjeta11 = true;
-    }else{
-      this.mostrarTarjeta112 = true;
-    }
-
-  }
-
-}
-
-guardar5(): void {
-  // Obtener los valores de las variables
-  const value1 = this.value1;
-  const value2 = this.value2;
-  const value3 = this.value3;
-
-  if(value3 == 1){
-    if (this.value1 < 130 || this.value2 < 85) {
-      // Mostrar una tarjeta
-      this.mostrarTarjeta14 = true;
-    }else{
-      this.mostrarTarjeta112 = true;
-    }
-  }else{
-    if (this.value1 < 140 || this.value2 < 90) {
-      // Mostrar una tarjeta
-      this.mostrarTarjeta14 = true;
-    }else{
-      this.mostrarTarjeta112 = true;
-    }
-
-  }
-  
-  
-
-}
   q1si(): void {
       this.mostrarTarjeta2 = true;
+      this.mostrarTarjeta = false;
       this.ocultar1 = false;
       this.ocultar2 = false;
+
   }
 
   q0no(): void {
     this.mostrarTarjeta111 = true
+    this.mostrarTarjeta = false;
+    this.mostrarTarjeta5 = false;
+    this.mostrarTarjeta8 = false;
     this.ocultar3 = false;
     this.ocultar4 = false;
     this.ocultar5 = false;
@@ -269,48 +217,179 @@ guardar5(): void {
     this.ocultar2 = false;
   }
 
+  //tipo control 1
+
   q3si(): void {
+    this.control = false;
     this.mostrarTarjeta4 = true;
     this.ocultar5= false;
     this.ocultar6 = false;
   }
 
+  guardar2(): void {
+    // Obtener los valores de las variables
+    const value1 = this.value1;
+    const value2 = this.value2;
+    const value3 = this.value3;
+  
+    if(value3 == 1){
+      if (this.value1 >= 130 || this.value2 >= 85) {
+        // Mostrar una tarjeta
+        this.mostrarTarjeta5 = true;
+        this.mostrarTarjeta4 = false;
+      }else{
+        this.mostrarTarjeta112 = true;
+        this.mostrarTarjeta4 = false;
+      }
+    }else{
+      if (this.value1 >= 140 || this.value2 >= 90) {
+        // Mostrar una tarjeta
+        this.mostrarTarjeta5 = true;
+        this.mostrarTarjeta4 = false;
+      }else{
+        this.mostrarTarjeta112 = true;
+        this.mostrarTarjeta4 = false;
+      }
+    }
+    
+  }
+
+
   q4si(): void {
+    this.mostrarTarjeta5 = false;
     this.mostrarTarjeta6 = true;
     this.ocultar7 = false;
     this.ocultar8 = false;
   }
 
+  //control2
+
   q5si(): void {
+    this.control = false;
     this.mostrarTarjeta7 = true;
     this.ocultar9 = false;
     this.ocultar10 = false;
   }
 
+  guardar3(): void {
+    // Obtener los valores de las variables
+    const value1 = this.value1;
+    const value2 = this.value2;
+    const value3 = this.value3;
+  
+    if(value3 == 1){
+      if (this.value1 >= 130 || this.value2 >= 85) {
+        // Mostrar una tarjeta
+        this.mostrarTarjeta8 = true;
+        this.mostrarTarjeta7 = false;
+      }else{
+        this.mostrarTarjeta112 = true;
+        this.mostrarTarjeta7 = false;
+      }
+    }else{
+      if (this.value1 >= 140 || this.value2 >= 90) {
+        // Mostrar una tarjeta
+        this.mostrarTarjeta8 = true;
+        this.mostrarTarjeta7 = false;
+      }else{
+        this.mostrarTarjeta112 = true;
+        this.mostrarTarjeta7 = false;
+      }
+    }
+  }
+
   q6si(): void {
+    this.mostrarTarjeta8 = false;
     this.mostrarTarjeta9 = true;
     this.ocultar11 = false;
     this.ocultar12 = false;
   }
 
+  //control 3
+
   q7si(): void {
+    this.control = false;
     this.mostrarTarjeta10 = true;
     this.ocultar13 = false;
     this.ocultar14 = false;
   }
 
+  guardar4(): void {
+    // Obtener los valores de las variables
+    const value1 = this.value1;
+    const value2 = this.value2;
+    const value3 = this.value3;
+  
+    if(value3 == 1){
+      if (this.value1 >= 130 || this.value2 >= 85) {
+        // Mostrar una tarjeta
+        this.mostrarTarjeta11 = true;
+        this.mostrarTarjeta10 = false;
+      }else{
+        this.mostrarTarjeta112 = true;
+        this.mostrarTarjeta10 = true;
+      }
+  
+    }else{
+      if (this.value1 >= 140 || this.value2 >= 90) {
+        // Mostrar una tarjeta
+        this.mostrarTarjeta11 = true;
+        this.mostrarTarjeta10 = true;
+      }else{
+        this.mostrarTarjeta112 = true;
+        this.mostrarTarjeta10 = true;
+      }
+  
+    }
+  
+  }
+
   q8si(): void {
+    this.mostrarTarjeta11 = false;
     this.mostrarTarjeta12 = true;
     this.ocultar15 = false;
     this.ocultar16 = false;
   }
 
+  
+
   q9si(): void {
+    this.control = false;
     this.mostrarTarjeta13 = true;
     this.ocultar17 = false;
     this.ocultar18 = false;
   }
 
+  guardar5(): void {
+    // Obtener los valores de las variables
+    const value1 = this.value1;
+    const value2 = this.value2;
+    const value3 = this.value3;
+  
+    if(value3 == 1){
+      if (this.value1 >= 130 || this.value2 >= 85) {
+        // Mostrar una tarjeta
+        this.mostrarTarjeta14 = true;
+        this.mostrarTarjeta13 = false;
+      }else{
+        this.mostrarTarjeta112 = true;
+        this.mostrarTarjeta13 = false;
+      }
+    }else{
+      if (this.value1 >= 140 || this.value2 >= 90) {
+        // Mostrar una tarjeta
+        this.mostrarTarjeta14 = true;
+        this.mostrarTarjeta13 = false;
+      }else{
+        this.mostrarTarjeta112 = true;
+        this.mostrarTarjeta13 = false;
+      }
+  
+    }
+    
+    
+  
+  }
 
 }
 

@@ -19,6 +19,7 @@ body {
     margin-right: 5%;
     width: 80%;
     height: auto;
+      
 }
 
 .mat-container {
@@ -27,3 +28,8 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+mat-toolbar{
+    background-color: #ffffff;
+    border-bottom: 2px solid #2d627c;
+  }
