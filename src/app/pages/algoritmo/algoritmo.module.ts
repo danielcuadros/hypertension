@@ -10,6 +10,8 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -25,7 +27,10 @@ import {MatCardModule } from '@angular/material/card';
     NgIf, 
     MatButtonModule, 
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatGridListModule
   ]
 })
 export class AlgoritmoModule { 
